@@ -1,9 +1,9 @@
+
 .container {
   padding: 0 2rem;
 }
 
 .main {
-  min-height: 100vh;
   padding: 4rem 0;
   flex: 1;
   display: flex;
@@ -102,12 +102,78 @@
   font-size: 1.25rem;
   line-height: 1.5;
 }
-
+.connectBtn{
+  background-color: rgb(32, 161, 253);
+  border: none;
+  padding: 1rem 1.5rem;
+  color: white;
+  font-weight: 500;
+  border-radius: .2rem;
+}
+.createBtn{
+  background-color: rgb(35, 199, 98);
+  border: none;
+  padding: .5rem 1.5rem;
+  color: white;
+  font-weight: 500;
+  border-radius: .2rem;
+  margin: .5rem auto;
+  display: block;
+}
+.plusBtn{
+  margin: 1rem auto;
+  border-radius: 1rem;
+  background-color: rgb(127, 217, 255);
+  border: none;
+  padding: .6rem;
+  display: block;
+}
+.currMembers{
+  display: inline;
+}
+.deleteMember{
+  background-color: red;
+  border: none;
+  outline: none;
+  border-radius: .1rem;
+}
 .logo {
   height: 1em;
   margin-left: 0.5rem;
 }
-
+.contractSection{
+  display: flex;
+  justify-content: space-evenly;
+}
+.newUserInput{
+  border:  none;
+  background: none;
+  border-bottom: 1px solid rgb(220, 220, 220);
+  margin: 1rem .5rem;
+  font-size: 15px;
+}
+.errorTxt{
+  color: red;
+}
+.newContractAmount{
+  border:  none;
+  background: none;
+  border-bottom: 1px solid rgb(220, 220, 220);
+  margin: 1rem .5rem;
+  font-size: 15px;
+  width: 100%;
+  color: white;
+}
+.newContractAmount[type=text]:focus, .newUserInput[type=text]:focus{
+  outline: none;
+}
+.createContractBody{
+  /* border: 1px solid white; */
+  padding: 2rem;
+  margin: 2rem;
+  background-color: rgb(48, 48, 48);
+  border-radius: 1rem;
+}
 @media (max-width: 600px) {
   .grid {
     width: 100%;
@@ -120,10 +186,10 @@
   .footer {
     border-color: #222;
   }
-  .code {
+  /* .code {
     background: #111;
-  }
+  } */
   .logo img {
     filter: invert(1);
   }
-}
+} 

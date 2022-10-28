@@ -1,0 +1,11 @@
+.contractBody{
+    border: 1px solid white;
+    padding: 1rem;
+}
+.payBtn{
+    background-color: rgb(35, 199, 98);;
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+    margin: auto;
+    border: none;
+}
