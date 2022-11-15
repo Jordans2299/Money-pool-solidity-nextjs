@@ -10,6 +10,7 @@ Money Pools is a blockchain app currently working on the Goerli Ethereum test ne
 
 
 <h2>Build Instructions</h2>
+
 ```bash
 npm run dev
 ```
