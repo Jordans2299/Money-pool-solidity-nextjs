@@ -17,34 +17,57 @@ contract Pools{
 }
 
 contract Pool {
-    string[] accounts;
-    uint256 poolId;
+    address[] accounts;
     uint256 targetAmount;
-    constructor(string[] memory _accounts, uint256 _targetAmount, uint256 _poolId) {
+    string name;
+    uint256 private random;
+    event Winner(address account, uint256 amount, bool success);
+    mapping(address => bool) public received;
+    constructor(address[] memory _accounts, uint256 _targetAmount, string memory _name) {
         accounts = _accounts;
         targetAmount = _targetAmount;
-        poolId = _poolId;
+        name = _name;
+        random = (block.timestamp + block.difficulty) % accounts.length;
     }
-    // function setInitialAccounts(string[] memory initialAccounts) public{
-    //     accounts = initialAccounts; 
-    // }
-    // function setTargetAmount(uint256 amount) public{
-    //     targetAmount = amount;
-    // }
     function getTargetAmount() public view returns(uint256){
         return targetAmount;
     }
-    function getId() public view returns(uint256){
-        return poolId;
-    }
-    function addAccount(string memory accountAddress) public{
+    function addAccount(address accountAddress) public{
         accounts.push(accountAddress);
     }
-    function getAccounts() public view returns (string[] memory) {
+    function getName() public view returns (string memory){
+        return name;
+    }
+    function getAccounts() public view returns (address[] memory) {
         return accounts;
     }
+    function getAccountsLength() public view returns (uint256){
+        return accounts.length;
+    }
+    function getAccountAtIndex(uint256 index) public view returns (address){
+        return accounts[index];
+    }
     receive() external payable{
-
+        //require(!received[msg.sender], "You can only send once");
+        random = (block.difficulty + block.timestamp + random) % accounts.length;
+        //require((targetAmount - address(this).balance) >= msg.sender.balance,"You are sending too much money");
+        received[msg.sender] = true;
+    }
+    function getRandom() external view returns(uint256){
+        return random;
+    }
+    function chooseWinner() public{
+        address addy = accounts[random];
+        console.log(addy," balance: ",addy.balance);
+        // while(received[addy]==false){
+        //     random = (block.difficulty + block.timestamp + random) % accounts.length;
+        //     addy = accounts[random];
+        // }
+        console.log("chosen addy: ", addy);
+        (bool success, ) = (addy).call{value: address(this).balance}("");
+        emit Winner(addy, address(this).balance, success);
+        require(success, "Failed to withdraw money from contract.");
+        console.log(addy," balance: ",addy.balance);
     }
     function getBalance() external view returns(uint256){
         return address(this).balance;

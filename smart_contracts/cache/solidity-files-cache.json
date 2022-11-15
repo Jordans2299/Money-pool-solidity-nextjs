@@ -1,44 +1,9 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/Users/JordanStone/Documents/blockchain_shit/group_payment_system/smart_contracts/contracts/Lock.sol": {
-      "lastModificationDate": 1664139533889,
-      "contentHash": "ae66265769cc28ebdaa34881df95bc5e",
-      "sourceName": "contracts/Lock.sol",
-      "solcConfig": {
-        "version": "0.8.17",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.9"
-      ],
-      "artifacts": [
-        "Lock"
-      ]
-    },
     "/Users/JordanStone/Documents/blockchain_shit/group_payment_system/smart_contracts/contracts/Pool.sol": {
-      "lastModificationDate": 1665298024316,
-      "contentHash": "8c0e74907a477585f006552a9daf1b3c",
+      "lastModificationDate": 1668403811268,
+      "contentHash": "9b5dc945118e7a6bb02bea4969d21e0a",
       "sourceName": "contracts/Pool.sol",
       "solcConfig": {
         "version": "0.8.17",
