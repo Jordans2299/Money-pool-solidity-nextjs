@@ -39,7 +39,7 @@ export default function Contract({contractData, user}){
                 contractData.poolContract.chooseWinner();
             }
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
 

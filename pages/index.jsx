@@ -64,22 +64,6 @@ export default function Home() {
     }
   }
 
-  // const getAccounts = async () => {
-  //   try {
-  //     if (ethereum) {
-  //       const provider = new ethers.providers.Web3Provider(ethereum);
-  //       const signer = provider.getSigner();
-  //       const wavePortalContract = new ethers.Contract(contractAddress, poolContractABI, signer);
-
-  //       let getAddedAccounts = await wavePortalContract.getAccounts();
-  //       setAddedAccounts(getAddedAccounts);
-  //       console.log(addedAccounts);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
   const newTarget = (event) => {
     setTargetAmount(event.target.value);
   }
@@ -192,9 +176,9 @@ export default function Home() {
           <div>
             <h2>Current Participants</h2>
             {members.map(d => (
-              <div>
-                <p className={styles.currMembers}>{d}</p>
-                <button className={styles.deleteMember} onClick={() => deleteMember(d)}>
+              <div key={d}>
+                <p key={{d}} className={styles.currMembers}>{d}</p>
+                <button key={d+"1"} className={styles.deleteMember} onClick={() => deleteMember(d)}>
                   <FontAwesomeIcon icon={faX} />
                 </button>
               </div>))}
