@@ -35,10 +35,10 @@ export default function Home() {
   const addMemberInput = useRef(null);
 
   useEffect(() => {
-    connectWallet()
+    findWallet()
   }, [])
 
-  const connectWallet = async () => {
+  const findWallet = async () => {
     try {
       const ethereum = window.ethereum;
       if (!ethereum) {
@@ -61,6 +61,29 @@ export default function Home() {
       }
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  const connectWallet = async () => {
+    try {
+      const ethereum = window.ethereum;
+      if (!ethereum) {
+        setWalletConnectErrorTxt("Cannot locate wallet. Do you have MetaMask installed?");
+        console.log("no metamask :(");
+        return;
+      }
+
+      const accounts = await ethereum.request({
+        method: "eth_requestAccounts",
+      });
+
+      setWalletConnectErrorTxt("");
+      setAccount(ethers.utils.getAddress(accounts[0]));
+      setWalletConnected(true);
+
+    } catch (error) {
+        setWalletConnectErrorTxt("Cannot find MetaMask account. Make sure you are signed in!");
+        console.log("no connected account :/");
     }
   }
 
